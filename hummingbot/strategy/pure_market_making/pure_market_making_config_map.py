@@ -133,19 +133,33 @@ pure_market_making_config_map = {
                   prompt=maker_trading_pair_prompt,
                   validator=validate_exchange_trading_pair,
                   prompt_on_new=True),
+    # "bid_spread":
+    #     ConfigVar(key="bid_spread",
+    #               prompt="How far away from the mid price do you want to place the "
+    #                      "first bid order? (Enter 1 to indicate 1%) >>> ",
+    #               type_str="decimal",
+    #               validator=lambda v: validate_decimal(v, 0, 100, inclusive=False),
+    #               prompt_on_new=True),
+    # "ask_spread":
+    #     ConfigVar(key="ask_spread",
+    #               prompt="How far away from the mid price do you want to place the "
+    #                      "first ask order? (Enter 1 to indicate 1%) >>> ",
+    #               type_str="decimal",
+    #               validator=lambda v: validate_decimal(v, 0, 100, inclusive=False),
+    #               prompt_on_new=True),
     "bid_spread":
         ConfigVar(key="bid_spread",
                   prompt="How far away from the mid price do you want to place the "
-                         "first bid order? (Enter 1 to indicate 1%) >>> ",
+                         "first bid order? (Enter 0 or a positive number, e.g. 1 to indicate 1%) >>> ",
                   type_str="decimal",
-                  validator=lambda v: validate_decimal(v, 0, 100, inclusive=False),
+                  validator=lambda v: validate_decimal(v, 0, 100, inclusive=True),
                   prompt_on_new=True),
     "ask_spread":
         ConfigVar(key="ask_spread",
                   prompt="How far away from the mid price do you want to place the "
-                         "first ask order? (Enter 1 to indicate 1%) >>> ",
+                         "first ask order? (Enter 0 or a positive number, e.g. 1 to indicate 1%) >>> ",
                   type_str="decimal",
-                  validator=lambda v: validate_decimal(v, 0, 100, inclusive=False),
+                  validator=lambda v: validate_decimal(v, 0, 100, inclusive=True),
                   prompt_on_new=True),
     "minimum_spread":
         ConfigVar(key="minimum_spread",

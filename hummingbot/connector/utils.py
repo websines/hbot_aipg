@@ -25,7 +25,7 @@ def build_api_factory(throttler: AsyncThrottlerBase) -> WebAssistantsFactory:
 
 
 def split_hb_trading_pair(trading_pair: str) -> Tuple[str, str]:
-    base, quote = trading_pair.split("-")
+    base, quote = trading_pair.rsplit("-", 1)
     return base, quote
 
 
